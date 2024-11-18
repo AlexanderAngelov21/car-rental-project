@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "1ff0c6cf-3839-47a0-84bc-38cf6aad90c9",
+		"name": "Car Rental API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30280118"
+	},
+	"item": [
+		{
+			"name": "List All Cars by Location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cars?location=Sofia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cars"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "Sofia"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Car by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/cars/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a New Car",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"make\": \"Toyota\",\r\n    \"model\": \"Corolla\",\r\n    \"location\": \"Sofia\",\r\n    \"pricePerDay\": 50.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/cars"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Car",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"make\": \"Toyota\",\r\n    \"model\": \"Corolla\",\r\n    \"location\": \"Sofia\",\r\n    \"pricePerDay\": 55.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/cars/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Car",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/cars/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a New Offer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerName\": \"John Doe\",\r\n    \"customerAddress\": \"123 Main St\",\r\n    \"customerPhone\": \"555-1234\",\r\n    \"customerAge\": 30,\r\n    \"hasAccidents\": false,\r\n    \"carId\": 2,\r\n    \"startDate\": \"2023-11-01\",\r\n    \"endDate\": \"2023-11-10\",\r\n    \"totalPrice\": 500.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/offers"
+			},
+			"response": []
+		},
+		{
+			"name": "List All Offers by Customer Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/offers?customerName=John Doe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"offers"
+					],
+					"query": [
+						{
+							"key": "customerName",
+							"value": "John Doe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Offer by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/offers/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Offer",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
