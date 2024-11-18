@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/cars?location=Sofia",
+					"raw": "http://localhost:8080/cars?location=Plovdiv",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -24,7 +24,7 @@
 					"query": [
 						{
 							"key": "location",
-							"value": "Sofia"
+							"value": "Plovdiv"
 						}
 					]
 				}
@@ -36,7 +36,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8080/cars/1"
+				"url": "http://localhost:8080/cars/5"
 			},
 			"response": []
 		},
@@ -65,14 +65,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"make\": \"Toyota\",\r\n    \"model\": \"Corolla\",\r\n    \"location\": \"Sofia\",\r\n    \"pricePerDay\": 55.0\r\n}",
+					"raw": "{\r\n    \"make\": \"Toyota\",\r\n    \"model\": \"Corolla\",\r\n    \"location\": \"Plovdiv\",\r\n    \"pricePerDay\": 55.0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/cars/1"
+				"url": "http://localhost:8080/cars/5"
 			},
 			"response": []
 		},
@@ -92,7 +92,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customerName\": \"John Doe\",\r\n    \"customerAddress\": \"123 Main St\",\r\n    \"customerPhone\": \"555-1234\",\r\n    \"customerAge\": 30,\r\n    \"hasAccidents\": false,\r\n    \"carId\": 2,\r\n    \"startDate\": \"2023-11-01\",\r\n    \"endDate\": \"2023-11-10\",\r\n    \"totalPrice\": 500.0\r\n}",
+					"raw": "{\r\n    \"customerName\": \"John Doe\",\r\n    \"customerAddress\": \"123 Main St\",\r\n    \"customerPhone\": \"555-1234\",\r\n    \"customerAge\": 30,\r\n    \"hasAccidents\": true,\r\n    \"carId\": 5,\r\n    \"startDate\": \"2023-11-01\",\r\n    \"endDate\": \"2023-11-10\",\r\n    \"totalPrice\": 500.0\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -133,15 +133,16 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8080/offers/2"
+				"url": "http://localhost:8080/offers/5"
 			},
 			"response": []
 		},
 		{
 			"name": "Delete an Offer",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/offers/2"
 			},
 			"response": []
 		}
