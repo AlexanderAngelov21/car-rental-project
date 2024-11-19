@@ -1,5 +1,6 @@
 package org.example.carrentalapi.service;
 
+import org.example.carrentalapi.exception.ResourceNotFoundException;
 import org.example.carrentalapi.model.Offer;
 import org.example.carrentalapi.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,11 @@ public class OfferService {
     private OfferRepository offerRepository;
 
     public List<Offer> getAllOffers(String customerName) {
-        return offerRepository.findByCustomerName(customerName);
+        return offerRepository.findByCustomerNameAndIsValidTrue(customerName);
     }
 
     public Optional<Offer> getOfferById(Long id) {
-        return offerRepository.findById(id);
+        return offerRepository.findByIdAndIsValidTrue(id);
     }
 
     public Offer createOffer(Offer offer) {
@@ -31,7 +32,10 @@ public class OfferService {
     }
 
     public void deleteOffer(Long id) {
-        offerRepository.findById(id).ifPresent(offerRepository::delete);
+        Offer offer = offerRepository.findByIdAndIsValidTrue(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Offer not found with id: " + id));
+        offer.setValid(false);
+        offerRepository.save(offer);
     }
 
     private double calculateTotalPrice(LocalDate startDate, LocalDate endDate, double dailyPrice, boolean hasAccidents) {

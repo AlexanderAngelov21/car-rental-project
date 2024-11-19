@@ -20,6 +20,8 @@ public class Offer {
     private LocalDate startDate;
     private LocalDate endDate;
     private double totalPrice;
+    private boolean isValid = true;
+
 
     public Long getId() {
         return id;
@@ -99,5 +101,13 @@ public class Offer {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean isValid) {
+        this.isValid = isValid;
     }
 }

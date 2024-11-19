@@ -14,6 +14,8 @@ public class Car {
     private String model;
     private String location;
     private double pricePerDay;
+    private boolean isValid = true;
+
 
     public Long getId() {
         return id;
@@ -53,5 +55,13 @@ public class Car {
 
     public void setPricePerDay(double pricePerDay) {
         this.pricePerDay = pricePerDay;
+    }
+
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean isValid) {
+        this.isValid = isValid;
     }
 }

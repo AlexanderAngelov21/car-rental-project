@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CarService {
@@ -22,11 +21,11 @@ public class CarService {
         if (!VALID_LOCATIONS.contains(location)) {
             throw new IllegalArgumentException("Invalid location: " + location);
         }
-        return carRepository.findByLocation(location);
+        return carRepository.findByLocationAndIsValidTrue(location);
     }
 
     public Car getCarById(Long id) {
-        return carRepository.findById(id)
+        return carRepository.findByIdAndIsValidTrue(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found with id: " + id));
     }
 
@@ -41,7 +40,7 @@ public class CarService {
         if (!VALID_LOCATIONS.contains(carDetails.getLocation())) {
             throw new IllegalArgumentException("Invalid location: " + carDetails.getLocation());
         }
-        return carRepository.findById(id)
+        return carRepository.findByIdAndIsValidTrue(id)
                 .map(car -> {
                     car.setMake(carDetails.getMake());
                     car.setModel(carDetails.getModel());
@@ -52,8 +51,9 @@ public class CarService {
     }
 
     public void deleteCar(Long id) {
-        Car car = carRepository.findById(id)
+        Car car = carRepository.findByIdAndIsValidTrue(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found with id: " + id));
-        carRepository.delete(car);
+        car.setValid(false);
+        carRepository.save(car);
     }
 }
